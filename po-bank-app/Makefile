@@ -1,0 +1,9 @@
+PO_UILIB_DIR=../../po-uilib
+JARNAME=po-bank-app
+
+all:
+	(cd src; javac -cp $(PO_UILIB_DIR)/po-uilib.jar:../../po-bank-core/po-bank-core.jar -encoding UTF-8 `find . -name \*.java`)
+	(cd src; jar cf ../$(JARNAME).jar `find . -name \*.class -o -name \*.java` )
+
+clean:
+	$(RM) $(JARNAME).jar `find . -name \*.class`
